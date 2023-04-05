@@ -9,6 +9,7 @@
             <a class="nav-link1 nav-link-ltr1" href="/home">profile</a>
             <a class="nav-link1 nav-link-ltr1" href="/form">send requests</a>
             <a class="nav-link1 nav-link-ltr1" href="/offer">offers</a>
+            <a class="nav-link1 nav-link-ltr1" href="/recentReq">recent Requests <i class="fa-solid fa-rotate-right" style="color: #000000;"></i></a>
 
         </div>
     </ul>
@@ -70,8 +71,8 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">post</label>
-                    <input type="text" id="sector" name="sector" class="@error('sector') is-invalid @enderror form-control">
-                    @error('sector')
+                    <input type="text" id="post" name="post" class="@error('post') is-invalid @enderror form-control">
+                    @error('post')
                     <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
                 </div>

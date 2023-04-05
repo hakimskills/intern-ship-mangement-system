@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -33,7 +34,9 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
-        return view('adminHome');
+        $employees = Employee::all();
+
+        return view('adminHome', ['employees' => $employees]);
     }
 
     /**
@@ -45,4 +48,5 @@ class HomeController extends Controller
     {
         return view('managerHome');
     }
+
 }

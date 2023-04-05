@@ -5,7 +5,7 @@
         <a class="nav-link1 nav-link-ltr1" href="/manager/home">profile</a>
 
         <a class="nav-link1 nav-link-ltr1" href="/list2">list of requests</a>
-        <a class="nav-link1 nav-link-ltr1" href="/offer">offer intrship</a>
+        <a class="nav-link1 nav-link-ltr1" href="/offerInternship">offer intrship</a>
 
 
 

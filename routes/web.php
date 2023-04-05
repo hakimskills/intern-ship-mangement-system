@@ -36,10 +36,11 @@ Auth::routes();
 All Normal Users Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:user'])->group(function () {
+Route::middleware(['auth', 'user-access:user','prevent-back-history'])->group(function () {
     Route::get('form', [FormController::class, 'index']);
     Route::get('/home', [HomeController::class, 'index'])->name('home');
-    Route::get('offer', [OfferController::class, 'index']);
+    Route::get('/offer', [OfferController::class, 'index'])->name('offer');
+    Route::get('/recentReq', [EmployeeController::class, 'index2'])->name('recentReq');
 });
 
 
@@ -48,10 +49,17 @@ Route::middleware(['auth', 'user-access:user'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:admin'])->group(function () {
+Route::middleware(['auth', 'user-access:admin','prevent-back-history'])->group(function () {
 
     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+
+
     Route::get('/list', [EmployeeController::class, 'index'])->name('list');
+
+    Route::get('/employees/{id}', [EmployeeController::class, 'show'])->name('employees.show');
+
+    Route::post('/employees/{id}/accept', [EmployeeController::class, 'acceptEmployee'])->name('acceptEmployee');
+    Route::post('/employees/{id}/refuse', [EmployeeController::class, 'refuseEmployee'])->name('refuseEmployee');
 
 });
 
@@ -60,11 +68,15 @@ Route::middleware(['auth', 'user-access:admin'])->group(function () {
 All Admin Routes List
 --------------------------------------------
 --------------------------------------------*/
-Route::middleware(['auth', 'user-access:manager'])->group(function () {
+Route::middleware(['auth', 'user-access:manager','prevent-back-history'])->group(function () {
 
     Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home');
     Route::get('/list2', function () {
         return view('list2');
     });
+    Route::get('/offerInternship', function () {
+        return view('/entreprise/offre2');
+    });
+
 });
 

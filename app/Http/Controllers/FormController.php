@@ -23,15 +23,14 @@ class FormController extends Controller
 
         $validatedData = $request->validate([
             'name' => 'required',
-
-            'last_name'=>'required',
-            'email' => 'required|unique:employees|max:255',
+            'last_name' => 'required',
+            'email' => 'required',
             'birth' => 'required',
             'dateS' => 'required',
             'dateE' => 'required',
            // 'file_path'=>'required',
             'College_year'=>'required',
-            'sector'=>'required',
+            'post'=>'required',
             'Speciality'=>'required',
             'education'=>'required',
         ]);
@@ -51,7 +50,7 @@ class FormController extends Controller
         $emp->College_year = $request->College_year;
         $emp->Speciality = $request->Speciality;
         $emp->education = $request->education;
-        $emp->sector = $request->sector;
+        $emp->post = $request->post;
 
         $emp->save();
 

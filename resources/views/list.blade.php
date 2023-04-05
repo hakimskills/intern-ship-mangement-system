@@ -5,37 +5,51 @@
         <div class="navbar1 justify-content-center">
             <a class="nav-link1 nav-link-ltr1" href="/admin/home">profile</a>
 
-            <a class="nav-link1 nav-link-ltr1" href="/list">list of requests</a>
+            <a class="nav-link1 nav-link-ltr1" href="/list">list of requests({{ $employees->count() }})</a>
 
 
         </div>
+
     </ul>
+    @if($employees->count()==0)
+        <h3 class="text-center p-5"> no requests yet</h3>
+    @else
 
 
 
-
-    <table class="table ms-4 table-bordered" >
+    <table class="table  ms-3 table-striped-columns" >
         <thead>
         <tr class="table-dark">
+            <th scope="col">#</th>
+
             <th scope="col">First Name</th>
             <th scope="col">Last name</th>
             <th scope="col">Email</th>
+            <th scope="col">State</th>
 
         </tr>
         </thead>
         <tbody>
         @foreach ($employees as $employee)
-        <tr>
 
+        <tr>
+            <td>{{ $loop->iteration }}</td>
             <td>{{ $employee->name }}</td>
             <td>{{ $employee->last_name }}</td>
             <td>{{ $employee->email }}</td>
-            <td class="bor"><button type="button" class="btn btn-outline-dark">view</button></td>
+            @if($employee->accepted==0) <td>Not consulted <i class="fa-solid fa-question" style="color: #5c5c5c;"></i></td> @endif
+            @if($employee->accepted==1) <td>Accepted <i class="fa-solid fa-check" style="color: #17750a;"></i></td> @endif
+            @if($employee->accepted==2) <td>Refused <i class="fa-solid fa-xmark" style="color: #cf0707;"></i></td> @endif
+            @if($employee->accepted==0)
+            <td class="bor"><a href="{{ route('employees.show',$employee->id) }}" class="btn-danger btn-sm"> <button type="button" class="btn btn-outline-secondary "title="view">view <i class="fa-regular fa-eye" style="color: #511f50;"></i> </button></a></td>
+            @endif
+            @if($employee->accepted==2  ||$employee->accepted==1 )
+                <td class="bor"><a href="{{ route('employees.show',$employee->id) }}" title="edit"> <i class="fa-solid fa-wrench fa-xl ms-4" style="color: #4b1f51; "></i></a></td>
+            @endif
             @endforeach
         </tr>
 
         </tbody>
     </table>
-
-
+    @endif
 @endsection
