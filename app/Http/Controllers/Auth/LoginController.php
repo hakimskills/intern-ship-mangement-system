@@ -48,19 +48,19 @@ class LoginController extends Controller
             'password' => 'required',
         ]);
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-        {
+        if (auth()->attempt(array('email' => $input['email'], 'password' => $input['password']))) {
             if (auth()->user()->type == 'admin') {
                 return redirect()->route('admin.home');
-            }else if (auth()->user()->type == 'manager') {
+            } else if (auth()->user()->type == 'manager') {
                 return redirect()->route('manager.home');
-            }else{
+            } else {
                 return redirect()->route('home');
             }
-        }else{
+        } else {
             return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+                ->withErrors(['email' => 'Email-Address or Password Are Wrong.'])
+                ->withInput();
         }
-
     }
+
 }

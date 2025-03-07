@@ -60,4 +60,19 @@ class User extends Authenticatable
             get: fn ($value) =>  ["user", "admin", "manager"][$value],
         );
     }
+    public function employees()
+    {
+        return $this->hasMany(Employee::class, 'stud_id');
+    }
+
+    public function managedEmployees()
+    {
+        return $this->hasMany(Employee::class, 'manager_email', 'email');
+    }
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
+
+
 }

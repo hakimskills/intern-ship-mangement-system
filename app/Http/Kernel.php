@@ -66,6 +66,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'user-access' => \App\Http\Middleware\UserAccess::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
+        'first-login' => \App\Http\Middleware\CheckFirstLogin::class,
+
     ];
 
 }

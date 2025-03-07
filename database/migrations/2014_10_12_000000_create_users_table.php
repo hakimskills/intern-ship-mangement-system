@@ -17,13 +17,29 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('last_name');
+            $table->string('card_num')->nullable();
+            $table->string('social_num')->nullable();
+            $table->string('Speciality')->nullable();
+            $table->string('education')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('first_login')->default(true);
+            $table->unsignedBigInteger('company_id')->nullable();
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companies')
+                ->onDelete('cascade');
             $table->tinyInteger('type')->default(0);
-            /* Users: 0=>User, 1=>Admin, 2=>Manager */
+            /* Users: 0=>Student, 1=>head of department , 2=>Manager of intern */
+            $table->unsignedBigInteger('id_dep')->nullable();
+            $table->foreign('id_dep')
+                ->references('id')
+                ->on('departments')
+                ->onDelete('cascade');
             $table->rememberToken();
             $table->timestamps();
+
         });
     }
 

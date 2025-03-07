@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+
 
 class RegisterController extends Controller
 {
@@ -65,6 +67,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $emailDomain = explode('@', $data['email'])[1];
+
+        if ($emailDomain !== 'univ-constantine2.dz') {
+            throw ValidationException::withMessages([
+                'email' => ['You can only register with an @univ-constantine2.dz email address.'],
+            ]);
+        }
+
         return User::create([
             'name' => $data['name'],
             'last_name'=> $data['last_name'],

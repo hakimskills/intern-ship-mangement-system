@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto" ,sans-serif;
+  }
+.op{
+    display: none;
+}
+  :root {
+    --secondary-color: #ffff;
+    --contrast-color: #6c63ff;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: -10;
+    background-color: var(--contrast-color);
+  }
+
+  .container {
+    display: flex;
+    height: 100vh;
+    justify-content: space-around;
+    align-items: center;
+    color: #fff;
+    animation: expand .8s ease forwards;
+    background-color: var(--secondary-color);
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transition: all .8s ease;
+      margin-bottom: 100px;
+  }
+
+  .container_content {
+   width: 50%;
+  }
+
+  .container_content_inner {
+    width: 80%;
+    margin-left: 80px;
+  }
+
+  .container_outer_img svg{
+    margin: 50px;
+    width: 50%;
+    overflow: hidden;
+      display: flex;
+  }
+
+  .container_img {
+    width: 100%;
+    animation: slideIn 1.5s ease-in-out forwards;
+  }
+
+  .par {
+    height: auto;
+    overflow: hidden;
+  }
+
+  p{
+    line-height: 40px;
+    transform: translateY(300px);
+    animation: slideUp .10s ease-in-out forwards .10s;
+    color: black;
+    font-size: 2rem;
+      padding-bottom: 2rem;
+  }
+
+  .a {
+     margin-top: 2.4rem;
+    height: 100%;
+            text-decoration: none   ;
+    width: 150px;
+    overflow: hidden;
+  }
+
+  .btns_more {
+      margin-top: 2.4rem;
+    background: transparent;
+    border: 1px solid var(--contrast-color);
+    border-radius: 50px;
+    padding: 8px 12px;
+    color: #6c63ff;
+    font-size: 26px;
+    text-transform: uppercase;
+      text-decoration: none   ;
+
+    outline: none;
+    transform: translateY(50px);
+    animation: slideUp .8s ease-in-out  forwards 1s;
+  }
+
+  .title {
+    overflow: hidden;
+    height: auto;
+  }
+
+  h1 {
+      font-size: 40px;
+      color: #6c63ff;
+      margin-bottom: 20px;
+      transform: translateY(100px);
+      animation: slideUp .8s ease forwards .5s;
+  }
+
+  @keyframes slideIn {
+    0% {
+      transform: translateX(500px) scale(.2);
+    }
+    100% {
+      transform: translateX(0px) scale(1);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(300px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes expand {
+    0% {
+      transform: translateX(1400px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
+  }
+  @media(max-width: 845px) {
+    p{
+        line-height: 40px;
+        transform: translateY(300px);
+        animation: slideUp .10s ease-in-out forwards .10s;
+        color: black;
+        font-size: 1rem;
+        padding-bottom: 2rem;
+    }
+
+    .a {
+        margin-top: 2.4rem;
+
+        text-decoration: none   ;
+        width: 150px;
+        overflow: hidden;
+    }
+
+    .btns_more {
+        margin-top: 2.4rem;
+        background: transparent;
+        border: 1px solid var(--contrast-color);
+        border-radius: 50px;
+        padding: 8px 12px;
+        color: #6c63ff;
+        font-size: 12px;
+        text-transform: uppercase;
+        text-decoration: none   ;
+
+        outline: none;
+        transform: translateY(50px);
+        animation: slideUp .8s ease-in-out  forwards 1s;
+    }
+
+    .title {
+        overflow: hidden;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 12px;
+        color: #6c63ff;
+        margin-bottom: 20px;
+        transform: translateY(100px);
+        animation: slideUp .8s ease forwards .5s;
+    }
+    .op{
+        display: flex;
+    }
+    .container_outer_img svg {
+
+        display: none;
+
+
+    }
+      .container_content_inner {
+          width: 90%;
+          margin-left: 10px;
+      }
+      .container_content {
+          width: 80%;
+          display: flex;
+          align-items: center;
+          margin-left: 3rem;
+      }
+      .container{
+          display: block;
+      }
+
+  }
+
